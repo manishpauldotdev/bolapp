@@ -1,4 +1,5 @@
 import 'package:bolapp/core/assets/assets.dart';
+import 'package:bolapp/core/styles/app_text_style.dart';
 import 'package:bolapp/features/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -25,7 +26,21 @@ class _SplashPageState extends State<SplashPage> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Lottie.asset(Assets.womanShoppingAnimation, width: 380),
-            Text('Buy Or List Anything'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Buy Or List Anything',
+                  style: AppTextStyle.textStylePoppinsSemiBold.copyWith(fontSize: 20),
+                ),
+                Transform.flip(
+                  flipX: true,
+                  child: Icon(
+                    Icons.favorite,
+                  ),
+                )
+              ],
+            ),
           ],
         ),
       ),
