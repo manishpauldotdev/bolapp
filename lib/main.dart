@@ -1,3 +1,4 @@
+import 'package:bolapp/core/providers/hive_provider.dart';
 import 'package:bolapp/core/providers/theme_notifier.dart';
 import 'package:bolapp/core/styles/app_theme.dart';
 import 'package:bolapp/features/splash/splash_page.dart';
@@ -7,7 +8,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
   runApp(
     const ProviderScope(
       child: MainApp(),
@@ -21,6 +24,7 @@ class MainApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeState = ref.watch(themeNotifierProvider);
+    ref.read(hiveProvider).init();
 
     return MaterialApp(
       theme: AppTheme.lightTheme,
